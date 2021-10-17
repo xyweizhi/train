@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品列表</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/case.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class=" top" v-if="isShow">
+            <div class="headerNav">
+                <div class="row" style="height: 160px;">
+                    <div class="col-sm-3">
+                        <div class="img" style="height: 160px;line-height: 160px;">
+                            <img src="images/aoklight.png" style="height: 130px;" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-7" style="text-align: right;">
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div> -->
+            <div class="headerImg" v-if="!isShow">
+                <img src="images/aoklight.png" style="height: 38px;" alt="">
+            </div>
+        <!-- </div> -->
+        <div class="header sticky-top ">
+            <div class="container">
+                <div class="headerNav">
+                    <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0;">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" style="position: relative;" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto navUl">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">首页</a>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="case.html">新闻中心</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="aboutUs.html">关于我们</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="headerNav">
+            <div class="main">
+                <!-- <div class="row"> -->
+                    <div class="mainTop">
+                        <img src="images/01.jpg" alt="">
+                    </div>
+                    <div class="mainTitle">
+                        <h2>新闻中心</h2>
+                    </div>
+                    <div class="mainList">
+                        <div class="item" v-for="(item,index) in cardList" :key="index" @click="godetail(item.id)">
+                            <div class="card" style="padding: 2px;">
+                                <div class="cardImg">
+                                    <img :src="item.imageUrl" class="card-img-top" :alt="item.title">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">{{item.title}}</div>
+                                    <div class="time"><svg t="1614086981936" class="icon" viewBox="0 0 1024 1024"
+                                            version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1812" width="16"
+                                            height="16">
+                                            <path
+                                                d="M870.4 204.8c10.24 0 15.36 5.12 15.36 15.36v686.08c0 10.24-5.12 15.36-15.36 15.36H117.76c-10.24 0-15.36-5.12-15.36-15.36V220.16c0-10.24 5.12-15.36 15.36-15.36h97.28v15.36c0 51.2 35.84 92.16 81.92 92.16 46.08 0 81.92-40.96 81.92-92.16V204.8h225.28v15.36c0 51.2 30.72 87.04 76.8 92.16h10.24c46.08-5.12 76.8-40.96 76.8-92.16V204.8h102.4z m-40.96 655.36V414.72h-665.6v450.56h665.6zM512 680.96v-87.04h117.76v92.16H512z m143.36-117.76V471.04h117.76V563.2h-117.76z m0 117.76v-87.04h117.76v92.16h-117.76z m-291.84 122.88v-92.16h117.76v92.16H363.52z m148.48 0v-92.16h117.76v92.16H512z m143.36 0v-92.16h117.76v92.16h-117.76z m-435.2 0v-92.16h117.76v92.16H220.16z m0-122.88v-87.04h117.76v92.16H220.16zM512 563.2V471.04h117.76V563.2H512z m-148.48 117.76v-87.04h117.76v92.16H363.52z m0-117.76V471.04h117.76V563.2H363.52z"
+                                                p-id="1813" fill="#545454"></path>
+                                            <path
+                                                d="M302.08 271.36c-25.6 0-46.08-15.36-46.08-40.96v-40.96-40.96c0-20.48 10.24-30.72 25.6-40.96 15.36-5.12 35.84 0 46.08 10.24 10.24 10.24 10.24 20.48 10.24 30.72v81.92c5.12 25.6-15.36 40.96-35.84 40.96z m389.12 0c-25.6 0-40.96-20.48-40.96-46.08v-40.96-40.96c0-20.48 10.24-30.72 25.6-40.96 15.36-5.12 35.84 0 46.08 10.24 10.24 10.24 10.24 20.48 10.24 30.72v81.92c0 30.72-15.36 46.08-40.96 46.08z"
+                                                p-id="1814" fill="#545454"></path>
+                                        </svg>{{item.time}}</div>
+                                    <div class="time">{{item.introduce}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item"></div>
+                    </div>
+                    <div style="width: 100%; text-align: center; margin: 30px 0;">
+                        <el-pagination background layout="prev, pager, next, jumper"
+                            @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage"
+                            :total="totalCount">
+                        </el-pagination>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="headerNav">
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div v-for="(item,index) in quickLinks" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i> {{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Products & Projects</div>
+                    <div v-for="(item,index) in productsProjects" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i>{{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div>
+                        Email: wally@aokledlight.com <br>
+                        General Manager: Wally (Yafeng Hei)<br>
+                        Telephone:<br>
+                        Shenzhen Factory: 0086-755-33274636<br>
+                        Sales Manager: Journey<br>
+                        Fuzhou Headquarter: 0086-591-83820886<br>
+                        Sales Manager: Elaine<br>
+                        USA Office Line：+1 （626）420 8777<br>
+                        VP: Kathy Mason<br>
+                        USA Warehouse: 18541 E Gale Ave, City of Industry, CA91748<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="keepOnRecord">
+            Copyright © XXXX-XXXX AOK All Rights Reserved.
+        </div>
+        <div class="sign">
+            <img src="images/cert.png" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- import Vue before Element -->
+    <script src="js/vue2.6.11.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- import JavaScript -->
+    <script src="js/ele-index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    navShow: false,
+                    dropdownShow: false,
+                    screenWidth: '',
+                    dropdownIndex: '',
+                    // 导航栏按钮父类型
+                    dropdownList: [{
+                            title: 'OUTDOOR LED OUTDOOR LED',
+                            children: [{
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, ]
+                        },
+                        {
+                            title: 'OUTDOOR LED OUTDOOR LED',
+                            children: [{
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, ]
+                        }
+                    ],
+                    // 导航栏按钮数据
+                    btnList: [],
+                    //列表数据
+                    cardList: [{
+                        id: 1,
+                        imageUrl: 'images/Cover.jpg',
+                        title: '【Project】230W LED parking lot light installation in Canada',
+                        introduce: "The client's project in Canada required the renovation of the parking lot lighting system and the replacement of the old lamps. ",
+                        time: " 2020-12-23 "
+                    }, {
+                        id: 2,
+                        imageUrl: 'images/Cover.jpg',
+                        title: '【Project】230W LED parking lot light installation in Canada',
+                        introduce: "The client's project in Canada required the renovation of the parking lot lighting system and the replacement of the old lamps. ",
+                        time: " 2020-12-23 "
+                    }, {
+                        id: 3,
+                        imageUrl: 'images/Cover.jpg',
+                        title: '【Project】230W LED parking lot light installation in Canada',
+                        introduce: "The client's project in Canada required the renovation of the parking lot lighting system and the replacement of the old lamps. ",
+                        time: " 21 December 2020 "
+                    }, {
+                        id: 4,
+                        imageUrl: 'images/Cover.jpg',
+                        title: '【Project】230W LED parking lot light installation in Canada',
+                        introduce: "The client's project in Canada required the renovation of the parking lot lighting system and the replacement of the old lamps. ",
+                        time: " 21 December 2020 "
+                    }, {
+                        id: 5,
+                        imageUrl: 'images/Cover.jpg',
+                        title: '【Project】230W LED parking lot light installation in Canada',
+                        introduce: "The client's project in Canada required the renovation of the parking lot lighting system and the replacement of the old lamps. ",
+                        time: " 21 December 2020 "
+                    }],
+                    // 页码 ------------------------------------------
+                    // 数据总数
+                    totalCount: 15,
+                    // 每页数量
+                    pageSize: 5,
+                    // 当前页数
+                    currentPage: 1,
+                    // bottom------------------------------------------
+                    quickLinks: [{
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        }
+                    ],
+                    productsProjects: [{
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                    ],
+                    isShow: true,
+                }
+            },
+            mounted() {
+                const that = this;
+                that.screenWidth = window.innerWidth;
+                window.onresize = function () {
+                    return that.screenWidth = window.innerWidth
+                };
+                console.log(that.screenWidth);
+
+                axios.get('https://www.fastmock.site/mock/3a60302423a5db4ee8b58db290fdcafc/test/all_news/?page=0')
+                    .then(function (response) {
+                        console.log(response.data)
+                        that.cardList = response.data.data.userInfo
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+            },
+            watch: {
+                screenWidth(val) {
+                    // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+                    if (!this.timer) {
+                        // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+                        this.screenWidth = val
+                        this.timer = true
+                        let that = this
+                        setTimeout(function () {
+                            // 打印screenWidth变化的值
+                            console.log(that.screenWidth)
+                            if (that.screenWidth < 992) {
+                                console.log("haole");
+                                that.dropdownShow = true
+                                that.navShow = false
+                            }
+                            that.timer = false
+                        }, 400)
+                    }
+                }
+            },
+            created() {
+                window.addEventListener('resize', this.handleResize)
+                this.handleResize()
+                // this.isShow = false
+                // this.fullWidth = document.documentElement.clientWidth;
+                // // 页面宽度小于750px时，不显示地图
+                // if (this.fullWidth < 500) {
+                //     this.isShow = false;
+                //     this.dropdownShow = false
+                //     this.navShow = true
+                // } else {
+                //     this.isShow = true;
+                //     this.dropdownShow = true
+                //     this.navShow = false
+                // }
+            },
+            methods: {
+                handleResize(event) {
+                    this.fullWidth = document.documentElement.clientWidth;
+                    // 页面宽度小于750px时，不显示地图
+                    if (this.fullWidth < 500) {
+                        this.isShow = false;
+                        this.dropdownShow = false
+                        this.navShow = true
+                    } else {
+                        this.isShow = true;
+                        this.dropdownShow = true
+                        this.navShow = false
+                    }
+                },
+                handleCurrentChange: function (val) {
+                    console.log(`当前页: ${val}`);
+                    const that = this;
+                    var text = "https://www.fastmock.site/mock/3a60302423a5db4ee8b58db290fdcafc/test/all_news/?page=" + String(parseInt(val)-1);
+                    axios.get(text)
+                    .then(function (response) {
+                        console.log(response.data)
+                        that.cardList = response.data.data.userInfo
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                },
+                selectStyle: function () {
+                    var that = this;
+                    that.navShow = true
+                },
+                outStyle: function () {
+                    var that = this;
+                    that.navShow = false
+                },
+                handleNodeClick: function (data) {
+                    console.log(data);
+                },
+                selectDropdownDiv: function (item, index) {
+                    console.log(item)
+                    var that = this;
+                    that.dropdownIndex = index;
+                    that.btnList = item.children;
+                },
+                godetail: function (id) {
+                    console.log(id)
+                    window.location.href = 'caseDetail.html?id=' + id
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+.main{
+    margin-bottom: 50px;
+}
+.mainTop img{
+    width: 100%;
+}
+
+.mainList{
+    display: flex;
+    /* padding: 50px 50px; */
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+.mainList .item{
+    display: flex;
+    margin-top: 20px;
+    /* padding: 50px 20px; */
+    width: 49%;
+    box-sizing: border-box;
+    /* border:1px solid rgba(151,151,151,.31); */
+}
+.mainList .item .left{
+    width: 33.33%;
+    flex-shrink: 0;
+    width: 172px;
+    height: 172px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: rgba(216,216,216,.34);
+    overflow: hidden;
+}
+.mainList .item .right{
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 16px;
+    border: .86px solid rgba(151,151,151,.31);
+    border-left-width: 0;
+    word-break: break-word;
+}
+.mainList .right div{
+    text-align: left;
+}
+
+.card:hover{
+    box-shadow: 0 0 12px #949494;
+}
+
+@media (max-width: 995px) {
+
+    .mainList .item{
+        width: 100%
+    }
+}

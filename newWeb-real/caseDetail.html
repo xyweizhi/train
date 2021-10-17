@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品列表</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/download.css">
+    <style>
+        .intro{
+            display: flex;
+            padding: 0 70px;
+            text-align: center; 
+        }
+        .intro div{
+            flex: 1;
+        }
+        .mainTitle{
+            font-size: 30px;
+            color: #545454;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class=" top" v-if="isShow">
+            <div class="headerNav">
+                <div class="row" style="height: 160px;">
+                    <div class="col-sm-3">
+                        <div class="img" style="height: 160px;line-height: 160px;">
+                            <img src="images/aoklight.png" style="height: 130px;" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-7" style="text-align: right;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div> -->
+            <div class="headerImg" v-if="!isShow">
+                <img src="images/aoklight.png" style="height: 38px;" alt="">
+            </div>
+        <!-- </div> -->
+        <div class="header sticky-top ">
+            <div class="container">
+                <div class="headerNav">
+                    <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0;">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" style="position: relative;" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto navUl">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">首页</a>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="case.html">新闻中心</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="aboutUs.html">关于我们</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="headerNav">
+            <div class="main">                    
+                    <div class="mainTitle"> {{ detailInfo.title }}</div>
+                    <div class="intro">
+                        <div> Views:{{ detailInfo.Views }}</div>
+                        <div> Author:{{ detailInfo.Author }}</div>
+                        <div> Publish Time:{{ detailInfo.PublishTime }}</div>
+                        <div> Origin:{{ detailInfo.Origin }}</div>
+                    </div>
+                    
+                    <div style="width: 100%; margin-top: 20px;" v-html="detail">
+                        
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+                        
+                    </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="headerNav">
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div v-for="(item,index) in quickLinks" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i> {{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Products & Projects</div>
+                    <div v-for="(item,index) in productsProjects" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i>{{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div>
+                        Email: wally@aokledlight.com <br>
+                        General Manager: Wally (Yafeng Hei)<br>
+                        Telephone:<br>
+                        Shenzhen Factory: 0086-755-33274636<br>
+                        Sales Manager: Journey<br>
+                        Fuzhou Headquarter: 0086-591-83820886<br>
+                        Sales Manager: Elaine<br>
+                        USA Office Line：+1 （626）420 8777<br>
+                        VP: Kathy Mason<br>
+                        USA Warehouse: 18541 E Gale Ave, City of Industry, CA91748<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="keepOnRecord">
+            Copyright © XXXX-XXXX AOK All Rights Reserved.
+        </div>
+        <div class="sign">
+            <img src="images/cert.png" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- import Vue before Element -->
+    <script src="js/vue2.6.11.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- import JavaScript -->
+    <script src="js/ele-index.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    id: '',
+                    detail: "<h1>这里是富文本哦~</h1>",
+                    navShow: false,
+                    dropdownShow: false,
+                    screenWidth: '',
+                    dropdownIndex: '',
+                    // 导航栏按钮数据
+                    btnList: [],
+                    
+                    // bottom------------------------------------------
+                    quickLinks: [{
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        }
+                    ],
+                    productsProjects: [{
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                    ],
+                    detailInfo:{
+                        title:'【Project】240W McDonald lighting Installation',
+                        Views:'14',
+                        Author:'Site Editor',
+                        PublishTime:'2020-05-23',
+                        Origin:'Site',
+                    },
+                    isShow: true,
+                }
+            },
+            mounted() {
+                const that = this;
+                that.screenWidth = window.innerWidth;
+                window.onresize = function () {
+                    return that.screenWidth = window.innerWidth
+                };
+                console.log(that.screenWidth);
+
+                var text = "https://www.fastmock.site/mock/3a60302423a5db4ee8b58db290fdcafc/test/detail/?id=" + that.id;
+                    axios.get(text)
+                    .then(function (response) {
+                        console.log(response.data)
+                        that.detailInfo = response.data
+                        that.detail = response.data.Detail
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+            },
+            watch: {
+                screenWidth(val) {
+                    // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+                    if (!this.timer) {
+                        // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+                        this.screenWidth = val
+                        this.timer = true
+                        let that = this
+                        setTimeout(function () {
+                            // 打印screenWidth变化的值
+                            console.log(that.screenWidth)
+                            if (that.screenWidth < 992) {
+                                console.log("haole");
+                                that.dropdownShow = true
+                                that.navShow = false
+                            }
+                            that.timer = false
+                        }, 400)
+                    }
+                }
+            },
+            created() {
+                this.id = this.get_query_string('id');
+                console.log(this.id);
+
+                window.addEventListener('resize', this.handleResize)
+                this.handleResize()
+            },
+            methods: {
+                handleResize(event) {
+                    this.fullWidth = document.documentElement.clientWidth;
+                    // 页面宽度小于750px时，不显示地图
+                    if (this.fullWidth < 500) {
+                        this.isShow = false;
+                        this.dropdownShow = false
+                        this.navShow = true
+                    } else {
+                        this.isShow = true;
+                        this.dropdownShow = true
+                        this.navShow = false
+                    }
+                },
+                selectStyle: function () {
+                    var that = this;
+                    that.navShow = true
+                },
+                outStyle: function () {
+                    var that = this;
+                    that.navShow = false
+                },
+                handleNodeClick: function (data) {
+                    console.log(data);
+                },
+                selectDropdownDiv: function (item, index) {
+                    console.log(item)
+                    var that = this;
+                    that.dropdownIndex = index;
+                    that.btnList = item.children;
+                },
+                godetail: function (id) {
+                    console.log(id)
+                    window.location.href = 'projectDetail.html?id=' + id
+                },
+                get_query_string: function (name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                    var r = window.location.search.substr(1).match(reg); //获取url中"?"符后的字符串并正则匹配
+
+                    var context = "";
+                    if (r != null) context = r[2];
+                    reg = null;
+                    r = null;
+                    return context == null || context == "" || context == "undefined" ? "" : context;
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

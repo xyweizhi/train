@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品列表</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contact-us.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class=" top" v-if="isShow">
+            <div class="headerNav">
+                <div class="row" style="height: 160px;">
+                    <div class="col-sm-3">
+                        <div class="img" style="height: 160px;line-height: 160px;">
+                            <img src="images/aoklight.png" style="height: 130px;" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-7" style="text-align: right;">
+                        <span><svg t="1612754067666" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="1647" width="20" height="20">
+                                <path d="M65.2 202.9H960v617.7H65.2z" fill="#00237A" p-id="1648"></path>
+                                <path
+                                    d="M960 419.8H599V202.9H423.5v216.9H65.2v184.1h358.3v216.7H599V603.9h361V419.8z m0 0"
+                                    fill="#FFFFFF" p-id="1649"></path>
+                                <path d="M960 750.2L165.6 202.9H65.2v71.2l793.7 546.5H960v-70.4z m0 0" fill="#FFFFFF"
+                                    p-id="1650"></path>
+                                <path d="M65.2 750.2L859.6 203H960v71.2L166.3 820.6H65.2v-70.4z m0 0" fill="#FFFFFF"
+                                    p-id="1651"></path>
+                                <path
+                                    d="M960 458.5H562.1V202.9H460.3v255.5H65.2v106.8h395.1v255.4h101.8V565.3H960V458.5z m0 0"
+                                    fill="#CF142B" p-id="1652"></path>
+                                <path
+                                    d="M960 820.6v-48.5L713.8 603.9h-69.3L960 820.6z m0-617.7h-69.3L599 401.6v18.2h43.3L960 202.9z m-582 401L65.2 819.1v1.5h66.4l291.8-200v-16.7H378z m-312.8-401v48.5l244.9 168.4h70L65.2 202.9z m0 0"
+                                    fill="#CF142B" p-id="1653"></path>
+                            </svg> Engilsh</span>
+                        <span><svg t="1612754127821" class="icon" viewBox="0 0 1609 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="2708" width="20" height="20">
+                                <path d="M0.219429 1.536H1607.68v1020.781714H0.219429z" fill="#FFFFFF" p-id="2709">
+                                </path>
+                                <path d="M1071.762286 1.536h535.844571v1020.781714h-535.844571z" fill="#E73826"
+                                    p-id="2710"></path>
+                                <path d="M0 1.536h535.844571v1020.781714H0z" fill="#00489D" p-id="2711"></path>
+                            </svg> Français</span>
+                        <span> <img src="images/Espanol.png" alt=""> Español</span>
+                        <span> <svg t="1612754337813" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="8279" width="20" height="20">
+                                <path d="M23.273 134.982h977.454v218.763H23.273z" fill="#211613" p-id="8280"></path>
+                                <path d="M23.273 351.418h977.454v214.11H23.273z" fill="#C73936" p-id="8281"></path>
+                                <path d="M23.273 565.527h977.454v218.764H23.273z" fill="#E7CA2D" p-id="8282"></path>
+                            </svg> Deutsch</span>
+                    </div>
+                    <!-- <div class="col-sm-2">
+                        <a href="#">登录</a>|
+                        <a href="#">注册</a>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+        <!-- <div> -->
+            <div class="headerImg" v-if="!isShow">
+                <img src="images/aoklight.png" style="height: 38px;" alt="">
+            </div>
+        <!-- </div> -->
+        <div class="header sticky-top ">
+            <div class="container">
+                <div class="headerNav">
+                    <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0;">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" style="position: relative;" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto navUl">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">首页</a>
+                                </li>
+                                <li class="nav-item dropdown" @mouseover="selectStyle"
+                                    @click="window.location.href = 'projects.html'">
+                                    <a class="nav-link dropdown-toggle" href="projects.html" id="navbarDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        产品 <i class="el-icon-arrow-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-if="dropdownShow">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                                <!-- pc端Products hover -->
+                                <div class="dropdownDiv" v-if="navShow" @mouseleave="outStyle">
+                                    <div class="row" style="margin-left: 0;margin-right: 0;">
+                                        <div class="col-md-3">
+                                            <div :class="['item',dropdownIndex === index ? 'active':'']" class="item"
+                                                @mouseover="selectDropdownDiv(item,index)"
+                                                v-for="(item,index) in dropdownList" :key="index">
+                                                {{ item.title }}
+                                            </div>
+                                        </div>
+                                        <div class="btnPrimaryActive col-md-9" style="text-align: left;">
+                                            <el-button type="primary" plain v-for="(item,index) in btnList"
+                                                :key="index">{{item.name}}</el-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="case.html">项目案例</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="download.html">资源下载</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="contact-us.html">联系我们</a>
+                                </li>
+                                <div class="ffgg" style="height: 60px;">
+                                    <div class="btn-group" style="height: 100%;">
+                                        <button type="button" class="btn" style=" font-weight: 600;" @click="window.location.href = 'aboutUs.html'">关于我们 </button>
+                                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                            id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" data-reference="parent">
+                                            <span class="el-icon-arrow-down"></span>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                            <!-- <i class="el-icon-arrow-down"></i> -->
+                                            <a class="dropdown-item" href="faqlist.html">FAQ</a>
+                                            <a class="dropdown-item" href="aok-production-center.html">AOK Production
+                                                Center</a>
+                                            <a class="dropdown-item" href="aok-testing-facilities.html">Aok Testing
+                                                Facilities</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="headerNav">
+            <div class="main">
+                <div class="breadcrumb">
+                    <el-breadcrumb separator="/">
+                        <el-breadcrumb-item>
+                            <a href="index.html"> Home</a>
+                        </el-breadcrumb-item>
+                        <el-breadcrumb-item><a href="/">Download</a></el-breadcrumb-item>
+                    </el-breadcrumb>
+                </div>
+                <div class="mainTitle">
+                    <h2>CONTACT US</h2>
+                </div>
+                <div class="mainInter"> If you have any questions, please contact us via email or telephone and we
+                    will get back to you as soon as possible.
+                    We look forward to hearing from you.
+                </div>
+                <div class="formMain">
+                    <div class="contactInfo">
+                        <div style="font-weight: 600; font-size: 24px;">CONTACT INFO</div>
+                        <div>Email: wally@aokledlight.com &nbsp;&nbsp;&nbsp;&nbsp; CEO: Wally</div>
+                        <div>Telephone:</div>
+                        <div>Shenzhen Factory: 0086-755-33274636 &nbsp;&nbsp;&nbsp;&nbsp; Sales Manager: Journey
+                        </div>
+                        <div>Fuzhou Headquarter: 0086-591-83820886 &nbsp;&nbsp;&nbsp;&nbsp; Sales Manager: Elaine
+                        </div>
+                        <div>USA Office: +1 (626) 420 8777 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VP:
+                            Kathy Mason </div>
+                        <div>Address:</div>
+                        <div>Shenzhen Factory：3rd Floor of Building 1 & 2nd Floor of Building 4, St George's Science
+                            and Technology Industrial Park, Shajin Street, Shenzhen, 518125, China
+                            Fuzhou Headquarter：Room 301, Yujing Business Center Zone 1, No. 12 Baihuazhou road,
+                            Cangshan district, Fuzhou, China
+                            USA service office: 18541 E Gale Ave, City of Industry, CA91748</div>
+                    </div>
+                    <div class="contactUs">
+                        <div style="font-weight: 600; font-size: 24px; margin-top: 20px;">Contact Us</div>
+                        <div style="padding:50px">
+                            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px"
+                                class="demo-ruleForm">
+                                <el-form-item prop="name">
+                                    <el-input v-model="ruleForm.name" placeholder="请输入name"></el-input>
+                                </el-form-item>
+                                <el-form-item prop="email">
+                                    <el-input v-model="ruleForm.email" placeholder="请输入email"></el-input>
+                                </el-form-item>
+                                <el-form-item prop="tel">
+                                    <el-input v-model="ruleForm.tel" placeholder="请输入tel"></el-input>
+                                </el-form-item>
+                                <el-form-item prop="message">
+                                    <el-input v-model="ruleForm.message" placeholder="请输入message"></el-input>
+                                </el-form-item>
+                                <el-form-item required>
+                                    <el-col :span="12">
+                                        <el-form-item prop="verify">
+                                            <el-input v-model="ruleForm.verify" placeholder="请输入verify"></el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :span="12">
+                                        <img style="height: 38px;" src="images/captcha.jpg" alt="">
+                                    </el-col>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="headerNav">
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div v-for="(item,index) in quickLinks" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i> {{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Products & Projects</div>
+                    <div v-for="(item,index) in productsProjects" :key="index">
+                        <a href="#"><i class="el-icon-arrow-right"></i>{{item.name}}</a>
+                        <el-divider></el-divider>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemTitle">Quick Links</div>
+                    <div>
+                        Email: wally@aokledlight.com <br>
+                        General Manager: Wally (Yafeng Hei)<br>
+                        Telephone:<br>
+                        Shenzhen Factory: 0086-755-33274636<br>
+                        Sales Manager: Journey<br>
+                        Fuzhou Headquarter: 0086-591-83820886<br>
+                        Sales Manager: Elaine<br>
+                        USA Office Line：+1 （626）420 8777<br>
+                        VP: Kathy Mason<br>
+                        USA Warehouse: 18541 E Gale Ave, City of Industry, CA91748<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="keepOnRecord">
+            Copyright © XXXX-XXXX AOK All Rights Reserved.
+        </div>
+        <div class="sign">
+            <img src="images/cert.png" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- import Vue before Element -->
+    <script src="js/vue2.6.11.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- import JavaScript -->
+    <script src="js/ele-index.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    // 表单数据
+                    ruleForm: {
+                        name: '',
+                        email: '',
+                        tel: '',
+                        message: '',
+                        verify: ''
+                    },
+                    rules: {
+                        name: [{
+                            required: true,
+                            message: '请输入name',
+                            trigger: 'blur'
+                        }],
+                        email: [{
+                            required: true,
+                            message: '请输入email',
+                            trigger: 'blur'
+                        }],
+                        message: [{
+                            required: true,
+                            message: '请输入message',
+                            trigger: 'blur'
+                        }],
+                        verify: [{
+                            required: true,
+                            message: '请输入verify',
+                            trigger: 'blur'
+                        }],
+                    },
+                    navShow: false,
+                    dropdownShow: false,
+                    screenWidth: '',
+                    dropdownIndex: '',
+                    // 导航栏按钮父类型
+                    dropdownList: [{
+                            title: 'OUTDOOR LED OUTDOOR LED',
+                            children: [{
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, {
+                                name: 'Area Light'
+                            }, ]
+                        },
+                        {
+                            title: 'OUTDOOR LED OUTDOOR LED',
+                            children: [{
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, {
+                                name: 'Area '
+                            }, ]
+                        }
+                    ],
+                    // 导航栏按钮数据
+                    btnList: [],
+                    // bottom------------------------------------------
+                    quickLinks: [{
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        },
+                        {
+                            name: 'Warranty Policy'
+                        }
+                    ],
+                    productsProjects: [{
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                        {
+                            name: 'Products Projects'
+                        },
+                    ],
+                    isShow: true,
+                }
+            },
+            mounted() {
+                const that = this;
+                that.screenWidth = window.innerWidth;
+                window.onresize = function () {
+                    return that.screenWidth = window.innerWidth
+                };
+                console.log(that.screenWidth);
+            },
+            watch: {
+                screenWidth(val) {
+                    // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+                    if (!this.timer) {
+                        // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+                        this.screenWidth = val
+                        this.timer = true
+                        let that = this
+                        setTimeout(function () {
+                            // 打印screenWidth变化的值
+                            console.log(that.screenWidth)
+                            if (that.screenWidth < 992) {
+                                console.log("haole");
+                                that.dropdownShow = true
+                                that.navShow = false
+                            }
+                            that.timer = false
+                        }, 400)
+                    }
+                }
+            },
+            created() {
+                
+                window.addEventListener('resize', this.handleResize)
+                this.handleResize()
+            },
+            methods: {
+                handleResize(event) {
+                    this.fullWidth = document.documentElement.clientWidth;
+                    // 页面宽度小于750px时，不显示地图
+                    if (this.fullWidth < 500) {
+                        this.isShow = false;
+                        this.dropdownShow = false
+                        this.navShow = true
+                    } else {
+                        this.isShow = true;
+                        this.dropdownShow = true
+                        this.navShow = false
+                    }
+                },
+                submitForm(formName) {
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            alert('submit!');
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+                },
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                },
+                selectStyle: function () {
+                    var that = this;
+                    that.navShow = true
+                },
+                outStyle: function () {
+                    var that = this;
+                    that.navShow = false
+                },
+                handleNodeClick: function (data) {
+                    console.log(data);
+                },
+                selectDropdownDiv: function (item, index) {
+                    console.log(item)
+                    var that = this;
+                    that.dropdownIndex = index;
+                    that.btnList = item.children;
+                },
+                godetail: function (id) {
+                    console.log(id)
+                    window.location.href = 'projectDetail.html?id=' + id
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
